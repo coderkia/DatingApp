@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
-import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeAgoPipe } from 'time-ago-pipe';
 
@@ -69,6 +69,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       ReactiveFormsModule,
       BsDatepickerModule.forRoot(),
       BrowserAnimationsModule,
+      PaginationModule.forRoot(),
       JwtModule.forRoot({
          config: {
             tokenGetter,
