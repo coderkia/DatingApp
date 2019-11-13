@@ -1,6 +1,6 @@
 export class Pagintaion {
     currentPage: number;
-    itemPerPage: number;
+    itemsPerPage: number;
     totalItems: number;
     totalPages: number;
 }
