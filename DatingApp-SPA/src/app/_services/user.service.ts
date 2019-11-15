@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_models/user';
-import { PagintedResult } from '../_models/Pagintaion';
+import { PagintedResult } from '../_models/Pagination';
 import { map } from 'rxjs/operators';
 import { resolve } from 'url';
 
@@ -17,7 +17,7 @@ export class UserService {
 
   }
 
-  getUsers(page?, itemPerPage?, userParams?): Observable<PagintedResult<User[]>> {
+  getUsers(page?, itemPerPage?, userParams?, likesParam?): Observable<PagintedResult<User[]>> {
     const paginatedResult: PagintedResult<User[]> = new PagintedResult<User[]>();
 
     let params = new HttpParams();
@@ -31,7 +31,14 @@ export class UserService {
       params = params.append('gender', userParams.gender);
       params = params.append('orderby', userParams.orderBy);
     }
+    if (likesParam === 'likers') {
+      params = params.append('likers', 'true');
+    }
 
+    if (likesParam === 'likees') {
+      params = params.append('likees', 'true');
+    }
+    console.log(params);
     return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response', params })
       .pipe(
         map(response => {
@@ -61,4 +68,9 @@ export class UserService {
     return this.http.delete(this.baseUrl + 'users/' + userId
       + '/photos/' + id, {});
   }
+
+  sendLike(id: number, reciepientId: number) {
+    return this.http.post(this.baseUrl + 'users/' + id + '/like/' + reciepientId, {});
+  }
+
 }

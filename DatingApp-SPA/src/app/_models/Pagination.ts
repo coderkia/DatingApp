@@ -1,4 +1,4 @@
-export class Pagintaion {
+export class Pagination {
     currentPage: number;
     itemsPerPage: number;
     totalItems: number;
@@ -7,5 +7,5 @@ export class Pagintaion {
 
 export class PagintedResult<T> {
     result: T;
-    pagination: Pagintaion;
+    pagination: Pagination;
 }

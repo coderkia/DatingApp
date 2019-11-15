@@ -3,7 +3,7 @@ import { User } from '../../_models/user';
 import { AlertifyService } from '../../_services/alertify.service';
 import { UserService } from '../../_services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { Pagintaion, PagintedResult } from 'src/app/_models/Pagintaion';
+import { Pagination, PagintedResult } from 'src/app/_models/Pagination';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,7 +16,7 @@ export class MemberListComponent implements OnInit {
   user: User = JSON.parse(localStorage.getItem('user'));
   genderList = [{ value: 'male', display: 'Males' }, { value: 'female', display: 'Females' }];
   userParams: any = {};
-  pagination: Pagintaion;
+  pagination: Pagination;
 
   constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
