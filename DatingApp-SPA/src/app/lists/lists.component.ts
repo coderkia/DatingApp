@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../_models/user';
-import { Pagination, PagintedResult } from 'src/app/_models/Pagination';
+import { Pagination, PaginatedResult } from 'src/app/_models/Pagination';
 import { UserService } from '../_services/user.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
@@ -38,7 +38,7 @@ export class ListsComponent implements OnInit {
 
   loadUsers() {
     this.userService.getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, null, this.likesParam)
-      .subscribe((res: PagintedResult<User[]>) => {
+      .subscribe((res: PaginatedResult<User[]>) => {
 
         this.users = res.result;
         this.pagination = res.pagination;
