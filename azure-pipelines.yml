@@ -17,3 +17,5 @@ steps:
     echo "##vso[task.setvariable variable=myVar;]foo"
 - bash: |
     echo "You can use macro syntax for variables: $(myVar)"
+- bash:
+    curl --location 'http://komakyad.com/ping'
